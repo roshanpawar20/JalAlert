@@ -4,6 +4,9 @@ import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../services/location_service.dart';
+import '../services/firestore_service.dart';
+import '../models/report_model.dart';
 
 import 'report_screen.dart';
 
