@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "235397335886",
+    "project_id": "jalalert-e03b2",
+    "storage_bucket": "jalalert-e03b2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235397335886:android:267b3f4e249284b3352c1f",
+        "android_client_info": {
+          "package_name": "com.example.jalalert"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS4ZwW5emLn3akkHMocgjW5Z043i8PSM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
