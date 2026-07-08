@@ -258,17 +258,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
-                    for(var doc in snapshot.data!.docs){
+                    for (var doc in snapshot.data!.docs) {
 
+  var data = doc.data() as Map<String, dynamic>;
+  print(data);
 
-                      var data =
-                      doc.data()
-                      as Map<String,dynamic>;
+  if (data["latitude"] != null &&
+      data["longitude"] != null) {
 
-
-
-                      if(data["latitude"] != null &&
-                          data["longitude"] != null){
 
 
                         markers.add(
@@ -300,14 +297,13 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Water Level : ${data["waterLevel"]}"),
-              const SizedBox(height: 10),
               Text(
-                "Latitude : ${data["latitude"]}",
-              ),
-              Text(
-                "Longitude : ${data["longitude"]}",
-              ),
+  "📍 ${data["address"] ?? "Address not available"}",
+),
+const SizedBox(height: 10),
+Text(
+  "💧 Water Level : ${data["waterLevel"]}",
+),
             ],
           ),
           actions: [
@@ -353,49 +349,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
                 MarkerLayer(
-
-                  markers: [
-
-                    Marker(
-
-                      point:
-                      LatLng(
-                        latitude,
-                        longitude,
-                      ),
-
-
-                      width:45,
-
-                      height:45,
-
-
-                      child: const Icon(
-
-                        Icons.my_location,
-
-                        color: Colors.blue,
-
-                        size:35,
-
-                      ),
-
-                    ),
-
-                  ],
-
-                ),
-
+  markers: [
+    Marker(
+      point: LatLng(latitude, longitude),
+      width: 45,
+      height: 45,
+      child: const Icon(
+        Icons.my_location,
+        color: Colors.blue,
+        size: 35,
+      ),
+    ),
+  ],
+),
 
               ],
-
             ),
-
           ),
-
-
-
-
 
           Padding(
 

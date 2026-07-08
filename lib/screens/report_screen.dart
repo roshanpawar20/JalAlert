@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:geocoding/geocoding.dart';
 
 
 class ReportScreen extends StatefulWidget {
@@ -42,31 +42,37 @@ String selectedLevel = "Low";
     Position position =
         await Geolocator.getCurrentPosition();
 
+        List<Placemark> placemarks =
+    await placemarkFromCoordinates(
+  position.latitude,
+  position.longitude,
+);
+
+Placemark place = placemarks.first;
+
+String address =
+    "${place.subLocality}, ${place.locality}, ${place.administrativeArea}";
+
 
 
 
     await FirebaseFirestore.instance
-        .collection("reports")
-        .add({
+    .collection("reports")
+    .add({
 
+  "issue": issueController.text.trim(),
 
-      "issue":
-      issueController.text.trim(),
-"waterLevel": selectedLevel,
+  "waterLevel": selectedLevel,
 
-      "latitude":
-      position.latitude,
+  "latitude": position.latitude,
 
+  "longitude": position.longitude,
 
-      "longitude":
-      position.longitude,
+  "address": address,
 
+  "timestamp": FieldValue.serverTimestamp(),
 
-      "timestamp":
-      FieldValue.serverTimestamp(),
-
-
-    });
+});
 
 
 
